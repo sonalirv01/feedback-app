@@ -1,67 +1,64 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f4f4f4;
-  text-align: center;
-  margin: 0;
+  background: #f5f5f5;
   padding: 20px;
 }
 
-.app {
+.container {
   max-width: 600px;
   margin: auto;
   background: white;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .feedback-form {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 20px;
 }
-
-.feedback-form input,
-.feedback-form select,
-.feedback-form button {
-  padding: 8px;
-  font-size: 16px;
-}
-
 .feedback-list {
   list-style: none;
   padding: 0;
+  margin-top: 20px;
 }
 
 .feedback-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #fff;
   padding: 10px;
   border-bottom: 1px solid #ddd;
 }
 
+.feedback-content {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adds spacing between stars and text */
+}
+
 .stars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.star-icon {
   color: gold;
-  font-size: 18px;
+  font-size: 20px; /* Adjust star size */
 }
 
 .feedback-text {
-  flex: 1;
-  padding: 0 10px;
-  text-align: left;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .delete-btn {
-  background: #dc3545;
+  background: red;
   color: white;
   border: none;
   padding: 5px 10px;
-  cursor: pointer;
   border-radius: 5px;
-}
-
-.delete-btn:hover {
-  background: #c82333;
+  cursor: pointer;
 }
