@@ -1,21 +1,18 @@
 import { createContext, useState } from "react";
 
-const FeedbackContext = createContext();
+export const FeedbackContext = createContext();
 
-export const FeedbackProvider = ({ children }) => {
-  const [feedback, setFeedback] = useState([
-    { id: 1, text: "This is great!", rating: 5 },
-    { id: 2, text: "Could be better.", rating: 3 },
-  ]);
+const FeedbackProvider = ({ children }) => {
+  const [feedback, setFeedback] = useState([]);
 
-  // Function to add feedback
+  // Add feedback
   const addFeedback = (newFeedback) => {
-    setFeedback([...feedback, { id: Date.now(), ...newFeedback }]);
+    setFeedback([...feedback, newFeedback]);
   };
 
-  // Function to delete feedback
-  const deleteFeedback = (id) => {
-    setFeedback(feedback.filter((item) => item.id !== id));
+  // Delete feedback
+  const deleteFeedback = (index) => {
+    setFeedback(feedback.filter((_, i) => i !== index));
   };
 
   return (
@@ -25,4 +22,4 @@ export const FeedbackProvider = ({ children }) => {
   );
 };
 
-export default FeedbackContext;
+export default FeedbackProvider;

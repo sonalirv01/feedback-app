@@ -1,12 +1,12 @@
-import { FeedbackProvider } from "./contexts/FeedbackContext";
-import FeedbackList from "./components/FeedbackList";
+import FeedbackProvider from "./contexts/FeedbackContext";
 import FeedbackForm from "./components/FeedbackForm";
+import FeedbackList from "./components/FeedbackList";
 
 const App = () => {
   return (
     <FeedbackProvider>
-      <div className="container">
-        <h2>Feedback App</h2>
+      <div className="app">
+        <h1>Feedback App</h1>
         <FeedbackForm />
         <FeedbackList />
       </div>

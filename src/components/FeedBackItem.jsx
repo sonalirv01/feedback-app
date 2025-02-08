@@ -1,13 +1,14 @@
 import { useContext } from "react";
-import FeedbackContext from "../contexts/FeedbackContext";
+import { FeedbackContext } from "../contexts/FeedbackContext";
 
-const FeedbackItem = ({ item }) => {
+const FeedbackItem = ({ item, index }) => {
   const { deleteFeedback } = useContext(FeedbackContext);
 
   return (
     <li className="feedback-item">
-      <strong>Rating:</strong> {item.rating} * - {item.text}
-      <button className="delete-btn" onClick={() => deleteFeedback(item.id)}>❌</button>
+      <span className="stars">{"★".repeat(item.rating)}</span>
+      <p className="feedback-text">{item.text}</p>
+      <button className="delete-btn" onClick={() => deleteFeedback(index)}>Delete</button>
     </li>
   );
 };

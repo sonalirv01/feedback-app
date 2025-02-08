@@ -1,36 +1,34 @@
 import { useState, useContext } from "react";
-import FeedbackContext from "../contexts/FeedbackContext";
+import { FeedbackContext } from "../contexts/FeedbackContext";
 
 const FeedbackForm = () => {
-  const { addFeedback } = useContext(FeedbackContext);
   const [text, setText] = useState("");
-  const [rating, setRating] = useState("");
+  const [rating, setRating] = useState(5);
+  const { addFeedback } = useContext(FeedbackContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!text || !rating) return;
+    if (!text.trim()) return;
 
-    addFeedback({ text, rating: Number(rating) });
+    addFeedback({ text, rating });
     setText("");
-    setRating("");
+    setRating(5);
   };
 
   return (
     <form onSubmit={handleSubmit} className="feedback-form">
       <input
         type="text"
-        placeholder="Enter feedback..."
+        placeholder="Write feedback..."
         value={text}
         onChange={(e) => setText(e.target.value)}
+        required
       />
-      <input
-        type="number"
-        placeholder="Rating (1-5)"
-        min="1"
-        max="5"
-        value={rating}
-        onChange={(e) => setRating(e.target.value)}
-      />
+      <select value={rating} onChange={(e) => setRating(Number(e.target.value))}>
+        {[...Array(5)].map((_, i) => (
+          <option key={i + 1} value={i + 1}>{i + 1} Stars</option>
+        ))}
+      </select>
       <button type="submit">Submit</button>
     </form>
   );
